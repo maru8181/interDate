@@ -31,6 +31,8 @@ public class App {
                 fos.write(data);
                 data = 10;
                 fos.write(data);
+                fos.write(data);
+                data = 12288;
             }
             
             fos.write(data);
