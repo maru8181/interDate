@@ -24,12 +24,19 @@ public class App {
         //         data += 65248;
 
             sb.append(line7);
-            System.out.println(line6);
+            System.out.print(line7);
         }
-        String str = sb.toString();
-        fw.write(str);
 
+        //金額 [0-9],[0-9]{2,} 後で調整
+        String str = sb.toString();
+        String str2 = str.replace("。1、", "。\n\n　１、");
+        String str3 = str2.replace("2、", "\n　２、");
+        String str4 = str3.replace("3、", "\n　３、");
+        String str5 = str4.replace("4、", "\n　４、");
+
+        fw.write(str5);
         fw.flush();
+
         br.close();
         fw.close();
     }
