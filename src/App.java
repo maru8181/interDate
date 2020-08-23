@@ -39,6 +39,11 @@ public class App {
                 fos.write(data);
                 data = 12288;
             }
+
+            // 48 = "0" , 57 = "9"
+            if(48 <= data && data <= 57) {
+                data += 65248;
+            }
             
             fos.write(data);
             System.out.println(data);
