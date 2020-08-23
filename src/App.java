@@ -7,11 +7,16 @@ public class App {
         FileReader fr = new FileReader("data.txt");
         BufferedReader br = new BufferedReader(fr);
         FileWriter fw = new FileWriter("newData.txt");
+        StringBuilder sb = new StringBuilder();
 
         String line = null;
 
+
         while((line = br.readLine()) != null) {
             System.out.println(line);
+            String line2 = line.replace(" ", "");
+            String line3 = line2.replace("　", "");
+
         // }
         
         // while ((data = br.read()) != -1) {
@@ -53,11 +58,13 @@ public class App {
         //     if(48 <= data && data <= 57) {
         //         data += 65248;
         //     }
-            
-            fw.write(line);
+            sb.append(line3);
             // System.out.println(line);
             // System.out.println(charData);
         }
+        String str = sb.toString();
+        fw.write(str);
+
         fw.flush();
         br.close();
         fw.close();
