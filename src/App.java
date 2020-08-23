@@ -38,6 +38,7 @@ public class App {
         fw.close();
     }
 
+    // すべての数字を半角にするメソッド
     public static String Hankaku(String zenkaku) {
         StringBuilder sb2 = new StringBuilder();
 
