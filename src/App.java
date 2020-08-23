@@ -11,11 +11,13 @@ public class App {
 
         String line = null;
 
-
         while((line = br.readLine()) != null) {
             System.out.println(line);
             String line2 = line.replace(" ", "");
             String line3 = line2.replace("　", "");
+            String line4 = line3.replace(",", "、");
+            String line5 = line4.replace("【", "\n【");
+            String line6 = line5.replace("】", "】\n\n　");
 
         // }
         
@@ -58,7 +60,7 @@ public class App {
         //     if(48 <= data && data <= 57) {
         //         data += 65248;
         //     }
-            sb.append(line3);
+            sb.append(line6);
             // System.out.println(line);
             // System.out.println(charData);
         }
