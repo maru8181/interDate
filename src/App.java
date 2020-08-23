@@ -17,27 +17,35 @@ public class App {
             String line5 = line4.replace(",", "、");
             String line6 = line5.replace("【", "\n【");
             String line7 = line6.replace("】", "】\n\n　");
+            String line8 = Zenkaku(line7);
 
-        //     // 48 = "0" , 57 = "9" , 65296 = "０"
-        //     // +65248 することで、半角数字を全角数字に変換
-        //     if(48 <= data && data <= 57) {
-        //         data += 65248;
-
-            sb.append(line7);
-            System.out.print(line7);
+            sb.append(line8);
+            System.out.print(line8);
         }
 
         //金額 [0-9],[0-9]{2,} 後で調整
         String str = sb.toString();
-        String str2 = str.replace("。1、", "。\n\n　１、");
-        String str3 = str2.replace("2、", "\n　２、");
-        String str4 = str3.replace("3、", "\n　３、");
-        String str5 = str4.replace("4、", "\n　４、");
+        String str2 = str.replace("。１、", "。\n\n　１、");
+        String str3 = str2.replace("２、", "\n　２、");
+        String str4 = str3.replace("３、", "\n　３、");
+        String str5 = str4.replace("４、", "\n　４、");
 
         fw.write(str5);
         fw.flush();
 
         br.close();
         fw.close();
+    }
+
+    public static String Zenkaku(String hankaku) {
+        StringBuilder sb2 = new StringBuilder();
+        for(int i = 0; i < hankaku.length(); i++){
+            char c = hankaku.charAt(i);
+            if('0' <= c && c <= '9') {
+                c =(char)(c -'0'+'０');
+            }
+            sb2.append(c);
+        }
+        return sb2.toString();
     }
 }
