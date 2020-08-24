@@ -4,8 +4,10 @@ public class Bengosi {
     public static void main(String[] args) throws Exception {
 
         FileReader fr = new FileReader("bengosi.txt");
+        // FileReader fr = new FileReader("../beforeFile/bengosi.txt");
         BufferedReader br = new BufferedReader(fr);
         FileWriter fw = new FileWriter("newBengosi.txt");
+        // FileWriter fw = new FileWriter("../changedFile/newBengosi.txt");
         StringBuilder sb = new StringBuilder();
 
         String line = null;
