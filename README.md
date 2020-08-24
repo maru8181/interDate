@@ -1,14 +1,13 @@
-## Getting Started
+# テキスト整形ツール
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+<br>
 
-## Folder Structure
+テキストを整形してくれるツールです。
+司法試験過去問のテキストを整形する用に作成しました。
 
-The workspace contains two folders by default, where:
+<br>
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- ## _使い方_
 
-## Dependency Management
+<br>
 
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
