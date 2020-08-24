@@ -1,11 +1,11 @@
 import java.io.*;
 
-public class App {
+public class Bengosi {
     public static void main(String[] args) throws Exception {
 
-        FileReader fr = new FileReader("data.txt");
+        FileReader fr = new FileReader("bengosi.txt");
         BufferedReader br = new BufferedReader(fr);
-        FileWriter fw = new FileWriter("newData.txt");
+        FileWriter fw = new FileWriter("newBengosi.txt");
         StringBuilder sb = new StringBuilder();
 
         String line = null;
@@ -15,26 +15,35 @@ public class App {
             String line3 = line2.replace("　", "");
             String line4 = line3.replace("\n", "");
             String line5 = line4.replace(",", "，");
-            String line6 = line5.replace("【", "\n【");
-            String line7 = line6.replace("】", "】\n\n　");
+            String line7 = line5.replace("〔", "\n\n\n〔");
+            // String line7 = line6.replace("〕", "〕\n\n　");
             String line8 = line7.replaceAll("-[０-９]-", "");
             String line9 = line8.replaceAll("-[0-9]{2,}-", "");
             String line10 = Hankaku(line9);
-            String line11 = Zenkaku(line10);
+            String line11 = sentakusi(line10);
             String line12 = Kingaku(line11);
             String line13 = Space(line12);
 
             sb.append(line13);
-            System.out.print(line13);
+            // System.out.print(line13);
         }
 
         String str = sb.toString();
-        String str2 = str.replace("。１，", "。\n\n　１，");
-        String str3 = str2.replace("２，", "\n　２，");
-        String str4 = str3.replace("３，", "\n　３，");
-        String str5 = str4.replace("４，", "\n　４，");
+        // String str2 = str.replace("）１．", "）\n\n　１．");
+        String str3 = str.replace("１．", "\n\n　１．");
+        String str4 = str3.replace("２．", "\n　２．");
+        String str5 = str4.replace("３．", "\n　３．");
+        String str6 = str5.replace("４．", "\n　４．");
+        String str7 = str6.replace("５．", "\n　５．");
+        String str8 = str7.replace("ア．", "\n\n　ア．");
+        String str9 = str8.replace("イ．", "\n　イ．");
+        String str10 = str9.replace("ウ．", "\n　ウ．");
+        String str11 = str10.replace("エ．", "\n　エ．");
+        String str12 = str11.replace("オ．", "\n　オ．");
+        String str13 = str12.replace("：２）", "：２）\n\n　");
+        String str14 = str13.replace("：３）", "：３）\n\n　");
 
-        fw.write(str5);
+        fw.write(str14);
         fw.flush();
 
         br.close();
@@ -42,11 +51,11 @@ public class App {
     }
 
     // すべての数字を半角にするメソッド
-    public static String Hankaku(String zenkaku) {
+    public static String Hankaku(String sentakusi) {
         StringBuilder sb2 = new StringBuilder();
 
-        for(int i = 0; i < zenkaku.length(); i++){
-            char c = zenkaku.charAt(i);
+        for(int i = 0; i < sentakusi.length(); i++){
+            char c = sentakusi.charAt(i);
             if('０' <= c && c <= '９') {
                 c =(char)(c -'０'+'0');
             }
@@ -55,8 +64,8 @@ public class App {
         return sb2.toString();
     }
 
-    // 1桁の数字は全角、2桁以上の数字は半角にするメソッド
-    public static String Zenkaku(String hankaku) {
+    // 1桁の数字は全角，2桁以上の数字は半角にするメソッド
+    public static String sentakusi(String hankaku) {
         StringBuilder sb3 = new StringBuilder();
 
         for(int i = 0; i < hankaku.length(); i++){
@@ -96,28 +105,28 @@ public class App {
     }
     
     // 金額を半角数字にするメソッド    [0-9]{1,3},[0-9]{3} を金額と判定
-    public static String Kingaku(String zenkaku) {
+    public static String Kingaku(String sentakusi) {
         StringBuilder sb4 = new StringBuilder();
 
-        for(int i = 0; i < zenkaku.length(); i++){
-            char c = zenkaku.charAt(i);
+        for(int i = 0; i < sentakusi.length(); i++){
+            char c = sentakusi.charAt(i);
 
-            if((i <= zenkaku.length()-5) && (zenkaku.length() >= 5)) {
-                char c_af = zenkaku.charAt(i+1);
-                char c_af2 = zenkaku.charAt(i+2);
-                char c_af3 = zenkaku.charAt(i+3);
-                char c_af4 = zenkaku.charAt(i+4);
+            if((i <= sentakusi.length()-5) && (sentakusi.length() >= 5)) {
+                char c_af = sentakusi.charAt(i+1);
+                char c_af2 = sentakusi.charAt(i+2);
+                char c_af3 = sentakusi.charAt(i+3);
+                char c_af4 = sentakusi.charAt(i+4);
 
                 if(('０' <= c && c <= '９') && (c_af == '，') && ('0' <= c_af2 && c_af2 <= '9') && ('0' <= c_af3 && c_af3 <= '9') && ('0' <= c_af4 && c_af4 <= '9')) {
                     c =(char)(c -'０'+'0');
                 }
             }
 
-            if((i >= 1) && (i <= zenkaku.length()-4) && (zenkaku.length() >= 5)) {
-                char c_bf = zenkaku.charAt(i-1);
-                char c_af = zenkaku.charAt(i+1);
-                char c_af2 = zenkaku.charAt(i+2);
-                char c_af3 = zenkaku.charAt(i+3);
+            if((i >= 1) && (i <= sentakusi.length()-4) && (sentakusi.length() >= 5)) {
+                char c_bf = sentakusi.charAt(i-1);
+                char c_af = sentakusi.charAt(i+1);
+                char c_af2 = sentakusi.charAt(i+2);
+                char c_af3 = sentakusi.charAt(i+3);
 
                 if((('０' <= c_bf && c_bf <= '９') || ('0' <= c_bf && c_bf <= '9')) && (c == '，') && ('0' <= c_af && c_af <= '9') && ('0' <= c_af2 && c_af2 <= '9') && ('0' <= c_af3 && c_af3 <= '9')) {
                     c = ',';
