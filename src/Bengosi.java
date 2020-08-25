@@ -40,7 +40,8 @@ public class Bengosi {
             String str2 = str.replace("【会話】教授：", "\n\n　【会話】\n　教　授：");
             String str3 = str2.replace("。学生", "。\n　学生");
             String str4 = str3.replace("。教授：", "。\n　教　授：");
-            String strFinal = str4.replace("【語句群】\n\n　ア", "\n\n　【語句群】\n\n　ア");
+            String str5 = str4.replace("【語句群】\n\n　ア", "\n\n　【語句群】\n　ア");
+            String strFinal = str5.replace("【語句群】\n\n　ａ", "\n\n　【語句群】\n　ａ");
 
             fw.write(strFinal);
             fw.flush();
