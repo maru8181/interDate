@@ -134,4 +134,26 @@ public class Util {
         return sb6.toString();
     }
 
+    // 配点の後に改行を入れるメソッド    ：[０-５]）で配点部分と判定
+    public static String haiten(String honbun) {
+        StringBuilder sb7 = new StringBuilder();
+
+        for(int i = 0; i < honbun.length(); i++){
+            char c = honbun.charAt(i);
+            sb7.append(c);
+
+            if((i >= 2) && (i < honbun.length()) && (honbun.length() >= 3)) {
+                char c_bf = honbun.charAt(i-1);
+                char c_bf2 = honbun.charAt(i-2);
+
+                if((c_bf2 == '：') && ('１' <= c_bf && c_bf <= '５') && (c == '）')) {
+                    sb7.append('\n');
+                    sb7.append('\n');
+                    sb7.append('　');
+                }
+            }
+        }
+        return sb7.toString();
+    }
+
 }
