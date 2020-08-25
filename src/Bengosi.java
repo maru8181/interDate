@@ -27,15 +27,13 @@ public class Bengosi {
                 String line11 = Util.kaigyou(line10);
                 String line12 = line11.replaceAll("-[０-９]-", "");
                 String line13 = line12.replaceAll("-[0-9]{2,}-", "");
+                String line14 = line13.replace("：２）", "：２）\n\n　");
+                String line15 = line14.replace("：３）", "：３）\n\n　");
 
-                sb.append(line13);
+                sb.append(line15);
             }
 
-            String str2 = sb.toString();
-            String str3 = str2.replace("：２）", "：２）\n\n　");
-            String str4 = str3.replace("：３）", "：３）\n\n　");
-
-            fw.write(str4);
+            fw.write(sb.toString());
             fw.flush();
             br.close();
             fw.close();
