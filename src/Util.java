@@ -88,7 +88,7 @@ public class Util {
         return sb4.toString();
     }
 
-    // 選択肢の間にスペースを入れるメソッド    ．[ア-オ]{2,} で選択肢と判定
+    // 選択肢の間にスペースを入れるメソッド    ．[ア-オ]{2,3} で選択肢と判定
     public static String space(String sentakusi) {
         StringBuilder sb5 = new StringBuilder();
 
@@ -100,6 +100,16 @@ public class Util {
                 char c_bf = sentakusi.charAt(i-1);
 
                 if((c_bf2 == '．') && ('ア' <= c_bf && c_bf <= 'オ') && ('ア' <= c && c <= 'オ')) {
+                    sb5.append(' ');
+                }
+            }
+
+            if((i >= 3) && (i <= sentakusi.length()-1) && (sentakusi.length() >= 4)) {
+                char c_bf3 = sentakusi.charAt(i-3);
+                char c_bf2 = sentakusi.charAt(i-2);
+                char c_bf = sentakusi.charAt(i-1);
+
+                if((c_bf3 == '．') && ('ア' <= c_bf2 && c_bf2 <= 'オ') && ('ア' <= c_bf && c_bf <= 'オ') && ('ア' <= c && c <= 'オ')) {
                     sb5.append(' ');
                 }
             }
