@@ -8,3 +8,5 @@ java Bengosi
 
 cd ../beforeFile
 mv * ../afterFile
+
+exit 0
