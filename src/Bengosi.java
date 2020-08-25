@@ -6,10 +6,10 @@ public class Bengosi {
         File dir = new File("../beforeFile");
         File[] list = dir.listFiles();
 
-        for(int i=0; i<list.length; i++) {
-            System.out.println(list[i].toString());
-            System.out.println(list[i].getName()); 
-        }
+        // for(int i=0; i<list.length; i++) {
+        //     System.out.println(list[i].toString());
+        //     System.out.println(list[i].getName()); 
+        // }
 
         for(int i = 0; i < list.length; i++) {
 
@@ -29,29 +29,30 @@ public class Bengosi {
                 String line5 = line4.replace(",", "，");
                 String line7 = line5.replace("〔", "\n\n\n〔");
                 // String line7 = line6.replace("〕", "〕\n\n　");
-                String line8 = line7.replaceAll("-[０-９]-", "");
-                String line9 = line8.replaceAll("-[0-9]{2,}-", "");
-                String line10 = Hankaku(line9);
-                String line11 = sentakusi(line10);
-                String line12 = Kingaku(line11);
-                String line13 = Space(line12);
+                String line8 = Hankaku(line7);
+                String line9 = sentakusi(line8);
+                String line10 = Kingaku(line9);
+                String line11 = Space(line10);
+                String line12 = kaigyou(line11);
+                String line13 = line12.replaceAll("-[０-９]-", "");
+                String line14 = line13.replaceAll("-[0-9]{2,}-", "");
 
-                sb.append(line13);
-                // System.out.print(line13);
+                sb.append(line14);
+                // System.out.print(line14);
             }
 
-            String str = sb.toString();
-            // String str2 = str.replace("）１．", "）\n\n　１．");
-            String str3 = str.replace("１．", "\n\n　１．");
-            String str4 = str3.replace("２．", "\n　２．");
-            String str5 = str4.replace("３．", "\n　３．");
-            String str6 = str5.replace("４．", "\n　４．");
-            String str7 = str6.replace("５．", "\n　５．");
-            String str8 = str7.replace("ア．", "\n\n　ア．");
-            String str9 = str8.replace("イ．", "\n　イ．");
-            String str10 = str9.replace("ウ．", "\n　ウ．");
-            String str11 = str10.replace("エ．", "\n　エ．");
-            String str12 = str11.replace("オ．", "\n　オ．");
+            String str12 = sb.toString();
+            // // String str2 = str.replace("）１．", "）\n\n　１．");
+            // String str3 = str.replace("１．", "\n\n　１．");
+            // String str4 = str3.replace("２．", "\n　２．");
+            // String str5 = str4.replace("３．", "\n　３．");
+            // String str6 = str5.replace("４．", "\n　４．");
+            // String str7 = str6.replace("５．", "\n　５．");
+            // String str8 = str7.replace("ア．", "\n\n　ア．");
+            // String str9 = str8.replace("イ．", "\n　イ．");
+            // String str10 = str9.replace("ウ．", "\n　ウ．");
+            // String str11 = str10.replace("エ．", "\n　エ．");
+            // String str12 = str11.replace("オ．", "\n　オ．");
             String str13 = str12.replace("：２）", "：２）\n\n　");
             String str14 = str13.replace("：３）", "：３）\n\n　");
 
@@ -171,5 +172,30 @@ public class Bengosi {
             sb5.append(c);
         }
         return sb5.toString();
+    }
+
+    // 選択肢を改行して、前にスペースを入れるメソッド
+    public static String kaigyou(String sentakusi) {
+        StringBuilder sb6 = new StringBuilder();
+
+        for(int i = 0; i < sentakusi.length(); i++){
+            char c = sentakusi.charAt(i);
+
+            if((i >= 0) && (i < sentakusi.length()-1) && (sentakusi.length() >= 2)) {
+                char c_af = sentakusi.charAt(i+1);
+
+                if((('ア' <= c && c <= 'コ') || ('１' <= c && c <= '９')) && (c_af == '．')) {
+
+                    if((c == 'ア') || (c == '１')) {
+                        sb6.append('\n');
+                    }
+                    sb6.append('\n');
+                    sb6.append('　');
+                }
+            }
+
+            sb6.append(c);
+        }
+        return sb6.toString();
     }
 }
