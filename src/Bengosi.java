@@ -20,17 +20,20 @@ public class Bengosi {
                 String line4 = line3.replace("\n", "");
                 String line5 = line4.replace(",", "，");
                 String line6 = line5.replace("〔", "\n\n\n〔");
-                String line7 = Util.hankaku(line6);
-                String line8 = Util.henkan(line7);
-                String line9 = Util.kingaku(line8);
-                String line10 = Util.space(line9);
-                String line11 = Util.kaigyou(line10);
-                String line12 = Util.haiten(line11);
-                String line13 = Util.marubatu(line12);
-                String line14 = line13.replaceAll("-[０-９]-", "");
-                String line15 = line14.replaceAll("-[0-9]{2,}-", "");
+                String line10 = line6.replace("（参照", "\n\n　（参照");
 
-                sb.append(line15);
+                String line11 = Util.hankaku(line10);
+                String line12 = Util.henkan(line11);
+                String line13 = Util.kingaku(line12);
+                String line14 = Util.space(line13);
+                String line15 = Util.kaigyou(line14);
+                String line16 = Util.haiten(line15);
+                String line20 = Util.marubatu(line16);
+
+                String line21 = line20.replaceAll("-[０-９]-", "");
+                String lineFinal = line21.replaceAll("-[0-9]{2,}-", "");
+
+                sb.append(lineFinal);
             }
 
             fw.write(sb.toString());
