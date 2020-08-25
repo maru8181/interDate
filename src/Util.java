@@ -156,4 +156,24 @@ public class Util {
         return sb7.toString();
     }
 
+    // 選択肢の○×の後ろにスペースを入れるメソッド    選択肢の○×は [ア-コ][○×][ア-コ] で判定
+    public static String marubatu(String sentakusi) {
+        StringBuilder sb8 = new StringBuilder();
+
+        for(int i = 0; i < sentakusi.length(); i++){
+            char c = sentakusi.charAt(i);
+            sb8.append(c);
+
+            if((i >= 1) && (i < sentakusi.length()-1) && (sentakusi.length() >= 3)) {
+                char c_bf = sentakusi.charAt(i-1);
+                char c_af = sentakusi.charAt(i+1);
+
+                if(('ア' <= c_bf && c_bf <= 'コ') && (c == '○' || c == '×') && ('ア' <= c_af && c_af <= 'コ')) {
+                    sb8.append('　');
+                }
+            }
+        }
+        return sb8.toString();
+    }
+
 }

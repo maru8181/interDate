@@ -26,10 +26,11 @@ public class Bengosi {
                 String line10 = Util.space(line9);
                 String line11 = Util.kaigyou(line10);
                 String line12 = Util.haiten(line11);
-                String line13 = line12.replaceAll("-[０-９]-", "");
-                String line14 = line13.replaceAll("-[0-9]{2,}-", "");
+                String line13 = Util.marubatu(line12);
+                String line14 = line13.replaceAll("-[０-９]-", "");
+                String line15 = line14.replaceAll("-[0-9]{2,}-", "");
 
-                sb.append(line14);
+                sb.append(line15);
             }
 
             fw.write(sb.toString());
