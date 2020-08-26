@@ -25,10 +25,11 @@ public class Bengosi {
                 String line21 = Util.hankaku(line20);
                 String line22 = Util.henkan(line21);
                 String line23 = Util.kingaku(line22);
-                String line24 = Util.space(line23);
-                String line25 = Util.kaigyou(line24);
-                String line26 = Util.haiten(line25);
-                String line50 = Util.marubatu(line26);
+                String line24 = Util.syousuu(line23);
+                String line25 = Util.space(line24);
+                String line26 = Util.kaigyou(line25);
+                String line27 = Util.haiten(line26);
+                String line50 = Util.marubatu(line27);
 
                 String line51 = line50.replaceAll("-[０-９]-", "");
                 String line100 = line51.replaceAll("-[0-9]{2,}-", "");

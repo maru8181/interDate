@@ -88,6 +88,36 @@ public class Util {
         return sb4.toString();
     }
 
+    // 小数を半角数字にするメソッド    [0-9]{1,}.[0-9]{1,} を小数と判定
+    public static String syousuu(String sentakusi) {
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < sentakusi.length(); i++){
+            char c = sentakusi.charAt(i);
+
+            if((i <= sentakusi.length()-3) && (sentakusi.length() >= 3)) {
+                char c_af = sentakusi.charAt(i+1);
+                char c_af2 = sentakusi.charAt(i+2);
+
+                if(('０' <= c && c <= '９') && (c_af == '.') && (('０' <= c_af2 && c_af2 <= '９') || ('0' <= c_af2 && c_af2 <= '9'))) {
+                    c =(char)(c -'０'+'0');
+                }
+            }
+
+            if((i >= 2) && (i <= sentakusi.length()-1) && (sentakusi.length() >= 3)) {
+                char c_bf2 = sentakusi.charAt(i-2);
+                char c_bf = sentakusi.charAt(i-1);
+
+                if((('０' <= c_bf2 && c_bf2 <= '９') || ('0' <= c_bf2 && c_bf2 <= '9')) && (c_bf == '.') && ('０' <= c && c <= '９')) {
+                    c =(char)(c -'０'+'0');
+                }
+            }
+
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
     // 選択肢の間にスペースを入れるメソッド    ．[ア-オ]{2,3} で選択肢と判定
     public static String space(String sentakusi) {
         StringBuilder sb5 = new StringBuilder();
