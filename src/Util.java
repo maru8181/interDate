@@ -2,21 +2,21 @@ public class Util {
 
     // すべての数字を半角にするメソッド
     public static String hankaku(String sentakusi) {
-        StringBuilder sb2 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < sentakusi.length(); i++){
             char c = sentakusi.charAt(i);
             if('０' <= c && c <= '９') {
                 c =(char)(c -'０'+'0');
             }
-            sb2.append(c);
+            sb.append(c);
         }
-        return sb2.toString();
+        return sb.toString();
     }
 
     // 1桁の数字は全角，2桁以上の数字は半角にするメソッド
     public static String henkan(String hankaku) {
-        StringBuilder sb3 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < hankaku.length(); i++){
             char c = hankaku.charAt(i);
@@ -49,15 +49,15 @@ public class Util {
                     c =(char)(c -'0'+'０');
                 }
             }
-            sb3.append(c);
+            sb.append(c);
         }
-        return sb3.toString();
+        return sb.toString();
     }
     
     // 金額を半角数字にするメソッド    [0-9]{1,3},[0-9]{3} を金額と判定
     public static String kingaku(String sentakusi) {
-        StringBuilder sb4 = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
+        
         for(int i = 0; i < sentakusi.length(); i++){
             char c = sentakusi.charAt(i);
 
@@ -83,9 +83,9 @@ public class Util {
                 }
             }
 
-            sb4.append(c);
+            sb.append(c);
         }
-        return sb4.toString();
+        return sb.toString();
     }
 
     // 小数を半角数字にするメソッド    [0-9]{1,}.[0-9]{1,} を小数と判定
@@ -120,7 +120,7 @@ public class Util {
 
     // 選択肢の間にスペースを入れるメソッド    ．[ア-オ]{2,3} で選択肢と判定
     public static String space(String sentakusi) {
-        StringBuilder sb5 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < sentakusi.length(); i++){
             char c = sentakusi.charAt(i);
@@ -130,7 +130,7 @@ public class Util {
                 char c_bf = sentakusi.charAt(i-1);
 
                 if((c_bf2 == '．') && ('ア' <= c_bf && c_bf <= 'オ') && ('ア' <= c && c <= 'オ')) {
-                    sb5.append(' ');
+                    sb.append(' ');
                 }
             }
 
@@ -140,18 +140,18 @@ public class Util {
                 char c_bf = sentakusi.charAt(i-1);
 
                 if((c_bf3 == '．') && ('ア' <= c_bf2 && c_bf2 <= 'オ') && ('ア' <= c_bf && c_bf <= 'オ') && ('ア' <= c && c <= 'オ')) {
-                    sb5.append(' ');
+                    sb.append(' ');
                 }
             }
 
-            sb5.append(c);
+            sb.append(c);
         }
-        return sb5.toString();
+        return sb.toString();
     }
 
     // 選択肢を改行して、前にスペースを入れるメソッド    [ア-ソ]．または[０-９]． を選択肢と判定
     public static String kaigyou(String sentakusi) {
-        StringBuilder sb6 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < sentakusi.length(); i++){
             char c = sentakusi.charAt(i);
@@ -162,58 +162,58 @@ public class Util {
                 if((('ア' <= c && c <= 'ソ') || ('１' <= c && c <= '９') || ('ａ' <= c && c <= 'ｚ')) && (c_af == '．')) {
 
                     if((c == 'ア') || (c == '１')|| (c == 'ａ')) {
-                        sb6.append('\n');
+                        sb.append('\n');
                     }
-                    sb6.append('\n');
-                    sb6.append('　');
+                    sb.append('\n');
+                    sb.append('　');
                 }
             }
 
-            sb6.append(c);
+            sb.append(c);
         }
-        return sb6.toString();
+        return sb.toString();
     }
 
     // 配点の後に改行を入れるメソッド    ：[０-５]）で配点部分と判定
     public static String haiten(String honbun) {
-        StringBuilder sb7 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < honbun.length(); i++){
             char c = honbun.charAt(i);
-            sb7.append(c);
+            sb.append(c);
 
             if((i >= 2) && (i < honbun.length()) && (honbun.length() >= 3)) {
                 char c_bf = honbun.charAt(i-1);
                 char c_bf2 = honbun.charAt(i-2);
 
                 if((c_bf2 == '：') && ('１' <= c_bf && c_bf <= '５') && (c == '）')) {
-                    sb7.append('\n');
-                    sb7.append('\n');
-                    sb7.append('　');
+                    sb.append('\n');
+                    sb.append('\n');
+                    sb.append('　');
                 }
             }
         }
-        return sb7.toString();
+        return sb.toString();
     }
 
     // 選択肢の○×の後ろにスペースを入れるメソッド    選択肢の○×は [ア-コ][○×][ア-コ] で判定
     public static String marubatu(String sentakusi) {
-        StringBuilder sb8 = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < sentakusi.length(); i++){
             char c = sentakusi.charAt(i);
-            sb8.append(c);
+            sb.append(c);
 
             if((i >= 1) && (i < sentakusi.length()-1) && (sentakusi.length() >= 3)) {
                 char c_bf = sentakusi.charAt(i-1);
                 char c_af = sentakusi.charAt(i+1);
 
                 if(('ア' <= c_bf && c_bf <= 'コ') && (c == '○' || c == '×') && ('ア' <= c_af && c_af <= 'コ')) {
-                    sb8.append('　');
+                    sb.append('　');
                 }
             }
         }
-        return sb8.toString();
+        return sb.toString();
     }
 
 }
