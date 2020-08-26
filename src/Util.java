@@ -159,9 +159,9 @@ public class Util {
             if((i >= 0) && (i < sentakusi.length()-1) && (sentakusi.length() >= 2)) {
                 char c_af = sentakusi.charAt(i+1);
 
-                if((('ア' <= c && c <= 'ソ') || ('１' <= c && c <= '９') || ('ａ' <= c && c <= 'ｚ')) && (c_af == '．')) {
+                if((('ア' <= c && c <= 'ソ') || ('１' <= c && c <= '９')) && (c_af == '．')) {
 
-                    if((c == 'ア') || (c == '１')|| (c == 'ａ')) {
+                    if((c == 'ア') || (c == '１')) {
                         sb.append('\n');
                     }
                     sb.append('\n');
