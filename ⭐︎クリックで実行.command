@@ -6,7 +6,7 @@ cd src
 
 java Bengosi
 
-cd ../beforeFile
-mv * ../afterFile
+cd ../⭐︎ここに入れる
+mv * ../整形前ファイルはここに保管
 
 exit 0

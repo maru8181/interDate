@@ -3,14 +3,14 @@ import java.io.*;
 public class Bengosi {
     public static void main(String[] args) throws Exception {
 
-        File dir = new File("../beforeFile");
+        File dir = new File("../⭐︎ここに入れる");
         File[] list = dir.listFiles();
 
         for(int i = 0; i < list.length; i++) {
 
             FileReader fr = new FileReader(list[i].toString());
             BufferedReader br = new BufferedReader(fr);
-            FileWriter fw = new FileWriter("../changedFile/[new]" + list[i].getName());
+            FileWriter fw = new FileWriter("../⭐︎整形後ファイル/[new]" + list[i].getName());
             StringBuilder sb = new StringBuilder();
             String line = null;
 
